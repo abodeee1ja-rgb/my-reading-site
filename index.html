@@ -1,0 +1,2937 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>مصحفي | القرآن الكريم</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #07140e,
+                    #0d2419,
+                    #07140e
+                );
+
+            color: white;
+
+            min-height: 100vh;
+
+            padding-bottom: 30px;
+        }
+
+
+        button,
+        input,
+        select {
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            padding:
+                17px 25px;
+
+            background:
+                rgba(5, 18, 12, 0.96);
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid
+                rgba(220, 186, 90, 0.25);
+        }
+
+
+        .logo {
+
+            color:
+                #e7c967;
+
+            font-size:
+                28px;
+
+            font-weight:
+                bold;
+        }
+
+
+        .header-text {
+
+            color:
+                #aebdb4;
+
+            font-size:
+                14px;
+        }
+
+
+        /* ==========================================
+           CONTAINER
+        ========================================== */
+
+        .container {
+
+            width:
+                94%;
+
+            max-width:
+                1150px;
+
+            margin:
+                30px auto 60px;
+        }
+
+
+        /* ==========================================
+           WELCOME
+        ========================================== */
+
+        .welcome {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .welcome h1 {
+
+            color:
+                #e7cb71;
+
+            font-size:
+                38px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .welcome p {
+
+            color:
+                #a7b4ad;
+
+            font-size:
+                16px;
+        }
+
+
+        /* ==========================================
+           CONTINUE BUTTON
+        ========================================== */
+
+        #continueBox {
+
+            display:
+                none;
+
+            text-align:
+                center;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        #continueButton {
+
+            border:
+                none;
+
+            background:
+                #d9bb5b;
+
+            color:
+                #142018;
+
+            padding:
+                12px 24px;
+
+            border-radius:
+                12px;
+
+            cursor:
+                pointer;
+
+            font-weight:
+                bold;
+
+            font-size:
+                15px;
+        }
+
+
+        /* ==========================================
+           SEARCH
+        ========================================== */
+
+        .search-box {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        #searchInput {
+
+            width:
+                min(650px, 100%);
+
+            padding:
+                15px 18px;
+
+            background:
+                #122219;
+
+            border:
+                1px solid #355845;
+
+            border-radius:
+                13px;
+
+            outline:
+                none;
+
+            color:
+                white;
+
+            font-size:
+                16px;
+        }
+
+
+        #searchInput:focus {
+
+            border-color:
+                #e1c45f;
+        }
+
+
+        /* ==========================================
+           SURAHS
+        ========================================== */
+
+        .surahs-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                16px;
+        }
+
+
+        .surah-card {
+
+            background:
+                #12251b;
+
+            border:
+                1px solid #315542;
+
+            border-radius:
+                16px;
+
+            padding:
+                18px;
+
+            cursor:
+                pointer;
+
+            transition:
+                0.2s;
+        }
+
+
+        .surah-card:hover {
+
+            border-color:
+                #e2c35e;
+
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,.3);
+        }
+
+
+        .surah-number {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            background:
+                #d9bb5b;
+
+            color:
+                #122017;
+
+            font-weight:
+                bold;
+
+            margin-bottom:
+                13px;
+        }
+
+
+        .surah-name {
+
+            color:
+                #f0da8d;
+
+            font-size:
+                22px;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .surah-info {
+
+            color:
+                #91a097;
+
+            font-size:
+                13px;
+        }
+
+
+        /* ==========================================
+           MUSHAF VIEW
+        ========================================== */
+
+        #mushafView {
+
+            display:
+                none;
+        }
+
+
+        .back-button {
+
+            background:
+                #173526;
+
+            color:
+                #e4c763;
+
+            border:
+                1px solid #3a614b;
+
+            padding:
+                10px 18px;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            margin-bottom:
+                20px;
+
+            font-size:
+                14px;
+        }
+
+
+        .mushaf-title {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .mushaf-title h1 {
+
+            color:
+                #e6ca70;
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .mushaf-title p {
+
+            color:
+                #9daaa4;
+
+            font-size:
+                14px;
+        }
+
+
+        /* ==========================================
+           AUDIO
+        ========================================== */
+
+        .audio-box {
+
+            background:
+                #12251b;
+
+            border:
+                1px solid #355945;
+
+            border-radius:
+                17px;
+
+            padding:
+                18px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .audio-title {
+
+            text-align:
+                center;
+
+            color:
+                #e4c763;
+
+            font-size:
+                17px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .audio-row {
+
+            display:
+                flex;
+
+            gap:
+                12px;
+
+            align-items:
+                center;
+        }
+
+
+        #playButton {
+
+            width:
+                54px;
+
+            height:
+                54px;
+
+            min-width:
+                54px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                #d9bb5b;
+
+            color:
+                #142018;
+
+            font-size:
+                22px;
+
+            cursor:
+                pointer;
+        }
+
+
+        #audio {
+
+            width:
+                100%;
+
+            flex:
+                1;
+        }
+
+
+        .audio-settings {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                15px;
+
+            margin-top:
+                17px;
+
+            color:
+                #b4c0b9;
+        }
+
+
+        .audio-settings select {
+
+            background:
+                #0e1e16;
+
+            color:
+                white;
+
+            border:
+                1px solid #385d49;
+
+            padding:
+                9px 12px;
+
+            border-radius:
+                9px;
+
+            outline:
+                none;
+
+            cursor:
+                pointer;
+        }
+
+
+        .repeat-box {
+
+            display:
+                flex;
+
+            gap:
+                7px;
+
+            align-items:
+                center;
+
+            cursor:
+                pointer;
+        }
+
+
+        .reciter-box {
+
+            margin-top:
+                16px;
+        }
+
+
+        .reciter-box label {
+
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            color:
+                #b5c1ba;
+        }
+
+
+        #reciterSelect {
+
+            width:
+                100%;
+
+            padding:
+                12px;
+
+            background:
+                #0e1e16;
+
+            color:
+                white;
+
+            border:
+                1px solid #385d49;
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+            cursor:
+                pointer;
+        }
+
+
+        /* ==========================================
+           PAGE CONTROLS
+        ========================================== */
+
+        .page-controls {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                9px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .page-button {
+
+            border:
+                none;
+
+            padding:
+                11px 16px;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            background:
+                #d9bb5b;
+
+            color:
+                #142018;
+
+            font-weight:
+                bold;
+
+            font-size:
+                14px;
+        }
+
+
+        .page-button.dark {
+
+            background:
+                #173526;
+
+            color:
+                #e4c763;
+
+            border:
+                1px solid #3a614b;
+        }
+
+
+        .page-button:hover {
+
+            opacity:
+                .92;
+        }
+
+
+        #pageInput {
+
+            width:
+                85px;
+
+            padding:
+                11px;
+
+            text-align:
+                center;
+
+            background:
+                #0e1e16;
+
+            color:
+                white;
+
+            border:
+                1px solid #385d49;
+
+            border-radius:
+                10px;
+
+            outline:
+                none;
+
+            font-size:
+                15px;
+        }
+
+
+        /* ==========================================
+           PAGE TOOLBAR
+        ========================================== */
+
+        .page-toolbar {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .tool-button {
+
+            border:
+                1px solid #456b56;
+
+            background:
+                #11241a;
+
+            color:
+                #e3c96d;
+
+            padding:
+                9px 14px;
+
+            border-radius:
+                10px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+        }
+
+
+        .tool-button:hover {
+
+            border-color:
+                #d9bb5b;
+        }
+
+
+        #zoomValue {
+
+            min-width:
+                55px;
+
+            text-align:
+                center;
+
+            color:
+                #b8c4bd;
+
+            font-size:
+                14px;
+        }
+
+
+        /* ==========================================
+           MUSHAF PAGE
+        ========================================== */
+
+        .page-wrapper {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+        }
+
+
+        .page-box {
+
+            width:
+                min(850px, 100%);
+
+            background:
+                #f2eedf;
+
+            padding:
+                10px;
+
+            border-radius:
+                8px;
+
+            box-shadow:
+                0 18px 50px
+                rgba(0,0,0,.4);
+
+            transition:
+                transform .25s ease;
+        }
+
+
+        #mushafPage {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            height:
+                auto;
+
+            background:
+                #f2eedf;
+
+            user-select:
+                none;
+        }
+
+
+        .page-number {
+
+            text-align:
+                center;
+
+            color:
+                #d5b85b;
+
+            margin:
+                15px 0 5px;
+
+            font-size:
+                18px;
+
+            font-weight:
+                bold;
+        }
+
+
+        /* ==========================================
+           BOOKMARK MESSAGE
+        ========================================== */
+
+        #bookmarkStatus {
+
+            text-align:
+                center;
+
+            color:
+                #9eb0a5;
+
+            min-height:
+                22px;
+
+            margin-top:
+                8px;
+
+            font-size:
+                13px;
+        }
+
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            color:
+                #75847b;
+
+            padding:
+                35px 15px;
+        }
+
+
+        /* ==========================================
+           LOADING
+        ========================================== */
+
+        .loading {
+
+            text-align:
+                center;
+
+            padding:
+                40px;
+
+            color:
+                #ddbf60;
+
+            font-size:
+                18px;
+        }
+
+
+        .error {
+
+            text-align:
+                center;
+
+            padding:
+                30px;
+
+            color:
+                #ff9292;
+        }
+
+
+        /* ==========================================
+           TABLET
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            .surahs-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            header {
+
+                padding:
+                    14px;
+            }
+
+
+            .logo {
+
+                font-size:
+                    22px;
+            }
+
+
+            .header-text {
+
+                display:
+                    none;
+            }
+
+
+            .surahs-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .surah-name {
+
+                font-size:
+                    18px;
+            }
+
+
+            .welcome h1 {
+
+                font-size:
+                    29px;
+            }
+
+
+            .mushaf-title h1 {
+
+                font-size:
+                    26px;
+            }
+
+
+            .audio-row {
+
+                flex-direction:
+                    column;
+            }
+
+
+            #playButton {
+
+                margin-bottom:
+                    5px;
+            }
+
+
+            .page-button {
+
+                padding:
+                    10px 12px;
+
+                font-size:
+                    13px;
+            }
+
+
+            .tool-button {
+
+                padding:
+                    8px 11px;
+
+                font-size:
+                    13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        ☪ مصحفي
+    </div>
+
+    <div class="header-text">
+        القرآن الكريم بين يديك
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <!-- ======================================
+         HOME
+    ======================================= -->
+
+    <section id="surahsView">
+
+
+        <div class="welcome">
+
+            <h1>
+                القرآن الكريم
+            </h1>
+
+            <p>
+                اختر السورة للقراءة والاستماع
+            </p>
+
+        </div>
+
+
+        <div id="continueBox">
+
+            <button
+                type="button"
+                id="continueButton"
+            >
+                📖 متابعة القراءة
+            </button>
+
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="🔎 ابحث عن سورة..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div
+            id="surahsContainer"
+            class="surahs-grid"
+        >
+
+            <div class="loading">
+                جاري تحميل السور...
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         MUSHAF
+    ======================================= -->
+
+    <section id="mushafView">
+
+
+        <button
+            type="button"
+            id="backButton"
+            class="back-button"
+        >
+            ← العودة إلى السور
+        </button>
+
+
+        <div class="mushaf-title">
+
+            <h1 id="currentSurah">
+                المصحف الشريف
+            </h1>
+
+            <p>
+
+                الصفحة
+
+                <span id="pageText">
+                    1
+                </span>
+
+                من 604
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================
+             AUDIO
+        =================================== -->
+
+        <div class="audio-box">
+
+
+            <div
+                id="audioTitle"
+                class="audio-title"
+            >
+                🎧 اختر قارئًا ثم اضغط تشغيل
+            </div>
+
+
+            <div class="audio-row">
+
+
+                <button
+                    type="button"
+                    id="playButton"
+                >
+                    ▶
+                </button>
+
+
+                <audio
+                    id="audio"
+                    controls
+                >
+                </audio>
+
+            </div>
+
+
+            <div class="audio-settings">
+
+
+                <label for="speedSelect">
+                    سرعة الصوت:
+                </label>
+
+
+                <select id="speedSelect">
+
+                    <option value="0.75">
+                        0.75×
+                    </option>
+
+                    <option
+                        value="1"
+                        selected
+                    >
+                        1×
+                    </option>
+
+                    <option value="1.25">
+                        1.25×
+                    </option>
+
+                    <option value="1.5">
+                        1.5×
+                    </option>
+
+                    <option value="2">
+                        2×
+                    </option>
+
+                </select>
+
+
+                <label class="repeat-box">
+
+                    <input
+                        type="checkbox"
+                        id="repeatAudio"
+                    >
+
+                    🔁 تكرار السورة
+
+                </label>
+
+            </div>
+
+
+            <div class="reciter-box">
+
+                <label for="reciterSelect">
+                    اختر القارئ:
+                </label>
+
+
+                <select
+                    id="reciterSelect"
+                >
+
+                    <option value="">
+                        جاري تحميل القراء...
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ==================================
+             PAGE NAVIGATION
+        =================================== -->
+
+        <div class="page-controls">
+
+
+            <button
+                type="button"
+                id="previousButton"
+                class="page-button dark"
+            >
+                ❮ السابقة
+            </button>
+
+
+            <input
+                id="pageInput"
+                type="number"
+                min="1"
+                max="604"
+                value="1"
+            >
+
+
+            <button
+                type="button"
+                id="openPageButton"
+                class="page-button"
+            >
+                فتح الصفحة
+            </button>
+
+
+            <button
+                type="button"
+                id="nextButton"
+                class="page-button"
+            >
+                التالية ❯
+            </button>
+
+        </div>
+
+
+
+        <!-- ==================================
+             PAGE TOOLS
+        =================================== -->
+
+        <div class="page-toolbar">
+
+
+            <button
+                type="button"
+                id="zoomOut"
+                class="tool-button"
+            >
+                🔍− تصغير
+            </button>
+
+
+            <span id="zoomValue">
+                100%
+            </span>
+
+
+            <button
+                type="button"
+                id="zoomIn"
+                class="tool-button"
+            >
+                🔍+ تكبير
+            </button>
+
+
+            <button
+                type="button"
+                id="zoomReset"
+                class="tool-button"
+            >
+                ↺ الحجم الطبيعي
+            </button>
+
+
+            <button
+                type="button"
+                id="fullscreenButton"
+                class="tool-button"
+            >
+                ⛶ ملء الشاشة
+            </button>
+
+
+            <button
+                type="button"
+                id="bookmarkButton"
+                class="tool-button"
+            >
+                🔖 حفظ الصفحة
+            </button>
+
+        </div>
+
+
+
+        <!-- ==================================
+             PAGE
+        =================================== -->
+
+        <div class="page-wrapper">
+
+            <div
+                id="pageBox"
+                class="page-box"
+            >
+
+                <img
+                    id="mushafPage"
+                    src=""
+                    alt="صفحة المصحف"
+                >
+
+
+                <div
+                    id="pageNumber"
+                    class="page-number"
+                >
+                    الصفحة 1
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="bookmarkStatus"
+        >
+        </div>
+
+
+
+        <!-- ==================================
+             BOTTOM BUTTONS
+        =================================== -->
+
+        <div class="page-controls">
+
+
+            <button
+                type="button"
+                id="previousBottomButton"
+                class="page-button dark"
+            >
+                ❮ الصفحة السابقة
+            </button>
+
+
+            <button
+                type="button"
+                id="nextBottomButton"
+                class="page-button"
+            >
+                الصفحة التالية ❯
+            </button>
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    القرآن الكريم — مصحفي
+
+</footer>
+
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ======================================
+           VARIABLES
+        ======================================= */
+
+        var allSurahs = [];
+
+        var allReciters = [];
+
+        var currentPage = 1;
+
+        var currentSurahNumber = null;
+
+        var currentSurahName = "";
+
+        var TOTAL_PAGES = 604;
+
+        var zoomLevel = 1;
+
+
+        var audio =
+            document.getElementById(
+                "audio"
+            );
+
+
+        var playButton =
+            document.getElementById(
+                "playButton"
+            );
+
+
+        var audioTitle =
+            document.getElementById(
+                "audioTitle"
+            );
+
+
+        var reciterSelect =
+            document.getElementById(
+                "reciterSelect"
+            );
+
+
+        var speedSelect =
+            document.getElementById(
+                "speedSelect"
+            );
+
+
+        var repeatAudio =
+            document.getElementById(
+                "repeatAudio"
+            );
+
+
+        var pageBox =
+            document.getElementById(
+                "pageBox"
+            );
+
+
+        /* ======================================
+           LOAD SURAHS
+        ======================================= */
+
+        function loadSurahs() {
+
+            var container =
+                document.getElementById(
+                    "surahsContainer"
+                );
+
+
+            fetch("/api/surahs")
+
+                .then(
+                    function(response) {
+
+                        if (!response.ok) {
+                            throw new Error(
+                                "Failed to load surahs"
+                            );
+                        }
+
+                        return response.json();
+
+                    }
+                )
+
+                .then(
+                    function(result) {
+
+                        if (
+                            !result.data ||
+                            !Array.isArray(result.data)
+                        ) {
+
+                            throw new Error(
+                                "Invalid surah data"
+                            );
+
+                        }
+
+
+                        allSurahs =
+                            result.data;
+
+
+                        renderSurahs(
+                            allSurahs
+                        );
+
+
+                        setupContinueButton();
+
+                    }
+                )
+
+                .catch(
+                    function(error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        container.innerHTML =
+                            '<div class="error">' +
+                            '❌ تعذر تحميل السور' +
+                            '<br><br>' +
+                            'تأكد من اتصال الإنترنت.' +
+                            '</div>';
+
+                    }
+                );
+
+        }
+
+
+        /* ======================================
+           RENDER SURAHS
+        ======================================= */
+
+        function renderSurahs(
+            surahs
+        ) {
+
+            var container =
+                document.getElementById(
+                    "surahsContainer"
+                );
+
+
+            container.innerHTML = "";
+
+
+            if (
+                !surahs ||
+                surahs.length === 0
+            ) {
+
+                container.innerHTML =
+                    '<div class="error">' +
+                    'لا توجد نتائج.' +
+                    '</div>';
+
+                return;
+
+            }
+
+
+            surahs.forEach(
+                function(surah) {
+
+                    var card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.className =
+                        "surah-card";
+
+
+                    card.innerHTML =
+
+                        '<div class="surah-number">' +
+                        surah.number +
+                        '</div>' +
+
+                        '<div class="surah-name">' +
+                        surah.name +
+                        '</div>' +
+
+                        '<div class="surah-info">' +
+                        surah.numberOfAyahs +
+                        ' آية' +
+                        '</div>';
+
+
+                    card.addEventListener(
+                        "click",
+                        function() {
+
+                            openSurah(
+                                surah.number,
+                                surah.name
+                            );
+
+                        }
+                    );
+
+
+                    container.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ======================================
+           LOAD RECITERS
+        ======================================= */
+
+        function loadReciters() {
+
+            fetch("/api/reciters")
+
+                .then(
+                    function(response) {
+
+                        if (!response.ok) {
+                            throw new Error(
+                                "Failed to load reciters"
+                            );
+                        }
+
+                        return response.json();
+
+                    }
+                )
+
+                .then(
+                    function(result) {
+
+                        allReciters =
+                            result.reciters || [];
+
+
+                        reciterSelect.innerHTML =
+                            "";
+
+
+                        if (
+                            allReciters.length === 0
+                        ) {
+
+                            var emptyOption =
+                                document.createElement(
+                                    "option"
+                                );
+
+
+                            emptyOption.value =
+                                "";
+
+
+                            emptyOption.textContent =
+                                "لا يوجد قراء متاحون";
+
+
+                            reciterSelect.appendChild(
+                                emptyOption
+                            );
+
+
+                            return;
+
+                        }
+
+
+                        allReciters.forEach(
+                            function(
+                                reciter,
+                                index
+                            ) {
+
+                                var option =
+                                    document.createElement(
+                                        "option"
+                                    );
+
+
+                                option.value =
+                                    index;
+
+
+                                option.textContent =
+                                    reciter.name +
+                                    " — " +
+                                    reciter.moshaf_name;
+
+
+                                reciterSelect.appendChild(
+                                    option
+                                );
+
+                            }
+                        );
+
+                    }
+                )
+
+                .catch(
+                    function(error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        reciterSelect.innerHTML =
+                            '<option>' +
+                            'تعذر تحميل القراء' +
+                            '</option>';
+
+                    }
+                );
+
+        }
+
+
+        /* ======================================
+           OPEN SURAH
+        ======================================= */
+
+        function openSurah(
+            surahNumber,
+            surahName
+        ) {
+
+            document.getElementById(
+                "surahsView"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "mushafView"
+            ).style.display =
+                "block";
+
+
+            currentSurahNumber =
+                surahNumber;
+
+
+            currentSurahName =
+                surahName;
+
+
+            document.getElementById(
+                "currentSurah"
+            ).textContent =
+                surahName;
+
+
+            stopAudio();
+
+
+            fetch(
+                "/api/surah/" +
+                surahNumber
+            )
+
+                .then(
+                    function(response) {
+
+                        if (!response.ok) {
+                            throw new Error(
+                                "Failed"
+                            );
+                        }
+
+                        return response.json();
+
+                    }
+                )
+
+                .then(
+                    function(result) {
+
+                        var ayahs =
+                            result.data &&
+                            result.data.ayahs
+                                ? result.data.ayahs
+                                : [];
+
+
+                        if (
+                            ayahs.length > 0 &&
+                            ayahs[0].page
+                        ) {
+
+                            currentPage =
+                                ayahs[0].page;
+
+                        }
+
+                        else {
+
+                            currentPage =
+                                1;
+
+                        }
+
+
+                        zoomReset();
+
+
+                        showPage(
+                            currentPage
+                        );
+
+                    }
+                )
+
+                .catch(
+                    function(error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        currentPage =
+                            1;
+
+
+                        zoomReset();
+
+                        showPage(1);
+
+                    }
+                );
+
+        }
+
+
+        /* ======================================
+           AUDIO URL
+        ======================================= */
+
+        function getAudioUrl() {
+
+            if (
+                currentSurahNumber === null ||
+                allReciters.length === 0
+            ) {
+
+                return "";
+
+            }
+
+
+            var index =
+                parseInt(
+                    reciterSelect.value,
+                    10
+                );
+
+
+            if (
+                isNaN(index)
+            ) {
+
+                return "";
+
+            }
+
+
+            var reciter =
+                allReciters[index];
+
+
+            if (!reciter) {
+
+                return "";
+
+            }
+
+
+            var list =
+                String(
+                    reciter.surah_list || ""
+                );
+
+
+            var numbers =
+                list
+                    .split(",")
+                    .map(
+                        function(item) {
+
+                            return parseInt(
+                                item.trim(),
+                                10
+                            );
+
+                        }
+                    )
+                    .filter(
+                        function(item) {
+
+                            return !isNaN(item);
+
+                        }
+                    );
+
+
+            if (
+                numbers.length > 0 &&
+                numbers.indexOf(
+                    currentSurahNumber
+                ) === -1
+            ) {
+
+                return "";
+
+            }
+
+
+            var number =
+                String(
+                    currentSurahNumber
+                ).padStart(
+                    3,
+                    "0"
+                );
+
+
+            return (
+                reciter.server +
+                number +
+                ".mp3"
+            );
+
+        }
+
+
+        /* ======================================
+           PLAY SURAH
+        ======================================= */
+
+        function playSurah() {
+
+            var url =
+                getAudioUrl();
+
+
+            if (!url) {
+
+                alert(
+                    "تعذر العثور على تلاوة لهذه السورة عند القارئ المختار."
+                );
+
+                return;
+
+            }
+
+
+            audio.src =
+                url;
+
+
+            audio.play()
+
+                .then(
+                    function() {
+
+                        playButton.textContent =
+                            "⏸";
+
+
+                        audioTitle.textContent =
+                            "🎧 " +
+                            currentSurahName;
+
+                    }
+                )
+
+                .catch(
+                    function(error) {
+
+                        console.error(
+                            error
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* ======================================
+           TOGGLE AUDIO
+        ======================================= */
+
+        function toggleAudio() {
+
+            if (!audio.src) {
+
+                playSurah();
+
+                return;
+
+            }
+
+
+            if (audio.paused) {
+
+                audio.play()
+
+                    .then(
+                        function() {
+
+                            playButton.textContent =
+                                "⏸";
+
+                        }
+                    );
+
+            }
+
+            else {
+
+                audio.pause();
+
+                playButton.textContent =
+                    "▶";
+
+            }
+
+        }
+
+
+        /* ======================================
+           STOP AUDIO
+        ======================================= */
+
+        function stopAudio() {
+
+            audio.pause();
+
+            audio.removeAttribute(
+                "src"
+            );
+
+            audio.load();
+
+
+            playButton.textContent =
+                "▶";
+
+
+            audioTitle.textContent =
+                "🎧 اختر قارئًا ثم اضغط تشغيل";
+
+        }
+
+
+        /* ======================================
+           SHOW PAGE
+        ======================================= */
+
+        function showPage(
+            page
+        ) {
+
+            var number =
+                parseInt(
+                    page,
+                    10
+                );
+
+
+            if (isNaN(number)) {
+                number = 1;
+            }
+
+
+            if (number < 1) {
+                number = 1;
+            }
+
+
+            if (
+                number > TOTAL_PAGES
+            ) {
+
+                number =
+                    TOTAL_PAGES;
+
+            }
+
+
+            currentPage =
+                number;
+
+
+            var image =
+                document.getElementById(
+                    "mushafPage"
+                );
+
+
+            image.src =
+                "https://api.islamic.app/v1/mushaf/page/" +
+                number +
+                ".svg?theme=light&width=900";
+
+
+            document.getElementById(
+                "pageText"
+            ).textContent =
+                number;
+
+
+            document.getElementById(
+                "pageNumber"
+            ).textContent =
+                "الصفحة " +
+                number;
+
+
+            document.getElementById(
+                "pageInput"
+            ).value =
+                number;
+
+
+            localStorage.setItem(
+                "lastQuranPage",
+                number
+            );
+
+
+            updateBookmarkStatus();
+
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }
+
+
+        /* ======================================
+           NEXT PAGE
+        ======================================= */
+
+        function nextPage() {
+
+            if (
+                currentPage <
+                TOTAL_PAGES
+            ) {
+
+                showPage(
+                    currentPage + 1
+                );
+
+            }
+
+        }
+
+
+        /* ======================================
+           PREVIOUS PAGE
+        ======================================= */
+
+        function previousPage() {
+
+            if (
+                currentPage >
+                1
+            ) {
+
+                showPage(
+                    currentPage - 1
+                );
+
+            }
+
+        }
+
+
+        /* ======================================
+           OPEN PAGE
+        ======================================= */
+
+        function openPage() {
+
+            var value =
+                document.getElementById(
+                    "pageInput"
+                ).value;
+
+
+            showPage(
+                value
+            );
+
+        }
+
+
+        /* ======================================
+           ZOOM
+        ======================================= */
+
+        function updateZoom() {
+
+            pageBox.style.transform =
+                "scale(" +
+                zoomLevel +
+                ")";
+
+
+            document.getElementById(
+                "zoomValue"
+            ).textContent =
+                Math.round(
+                    zoomLevel * 100
+                ) +
+                "%";
+
+        }
+
+
+        function zoomIn() {
+
+            if (
+                zoomLevel < 1.5
+            ) {
+
+                zoomLevel += 0.1;
+
+                updateZoom();
+
+            }
+
+        }
+
+
+        function zoomOut() {
+
+            if (
+                zoomLevel > 0.7
+            ) {
+
+                zoomLevel -= 0.1;
+
+                updateZoom();
+
+            }
+
+        }
+
+
+        function zoomReset() {
+
+            zoomLevel =
+                1;
+
+            updateZoom();
+
+        }
+
+
+        /* ======================================
+           FULLSCREEN
+        ======================================= */
+
+        function toggleFullscreen() {
+
+            if (
+                !document.fullscreenElement
+            ) {
+
+                if (
+                    pageBox.requestFullscreen
+                ) {
+
+                    pageBox.requestFullscreen();
+
+                }
+
+            }
+
+            else {
+
+                document.exitFullscreen();
+
+            }
+
+        }
+
+
+        /* ======================================
+           BOOKMARK
+        ======================================= */
+
+        function saveBookmark() {
+
+            localStorage.setItem(
+                "quranBookmarkPage",
+                currentPage
+            );
+
+
+            updateBookmarkStatus();
+
+
+            document.getElementById(
+                "bookmarkStatus"
+            ).textContent =
+                "🔖 تم حفظ الصفحة " +
+                currentPage;
+
+        }
+
+
+        function updateBookmarkStatus() {
+
+            var saved =
+                localStorage.getItem(
+                    "quranBookmarkPage"
+                );
+
+
+            if (
+                saved
+            ) {
+
+                document.getElementById(
+                    "bookmarkStatus"
+                ).textContent =
+                    "🔖 الصفحة المحفوظة: " +
+                    saved;
+
+            }
+
+            else {
+
+                document.getElementById(
+                    "bookmarkStatus"
+                ).textContent =
+                    "";
+
+            }
+
+        }
+
+
+        /* ======================================
+           CONTINUE READING
+        ======================================= */
+
+        function setupContinueButton() {
+
+            var saved =
+                localStorage.getItem(
+                    "lastQuranPage"
+                );
+
+
+            var box =
+                document.getElementById(
+                    "continueBox"
+                );
+
+
+            var button =
+                document.getElementById(
+                    "continueButton"
+                );
+
+
+            if (
+                saved &&
+                parseInt(saved, 10) >= 1 &&
+                parseInt(saved, 10) <= TOTAL_PAGES
+            ) {
+
+                box.style.display =
+                    "block";
+
+
+                button.textContent =
+                    "📖 متابعة القراءة — الصفحة " +
+                    saved;
+
+
+                button.onclick =
+                    function() {
+
+                        currentSurahNumber =
+                            null;
+
+                        currentSurahName =
+                            "المصحف الشريف";
+
+
+                        document.getElementById(
+                            "surahsView"
+                        ).style.display =
+                            "none";
+
+
+                        document.getElementById(
+                            "mushafView"
+                        ).style.display =
+                            "block";
+
+
+                        document.getElementById(
+                            "currentSurah"
+                        ).textContent =
+                            "المصحف الشريف";
+
+
+                        showPage(
+                            parseInt(
+                                saved,
+                                10
+                            )
+                        );
+
+                    };
+
+            }
+
+        }
+
+
+        /* ======================================
+           BACK TO SURAHS
+        ======================================= */
+
+        function backToSurahs() {
+
+            stopAudio();
+
+
+            document.getElementById(
+                "mushafView"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "surahsView"
+            ).style.display =
+                "block";
+
+
+            setupContinueButton();
+
+
+            window.scrollTo(
+                0,
+                0
+            );
+
+        }
+
+
+        /* ======================================
+           SEARCH
+        ======================================= */
+
+        document.getElementById(
+            "searchInput"
+        ).addEventListener(
+            "input",
+            function() {
+
+                var text =
+                    this.value
+                        .trim()
+                        .toLowerCase();
+
+
+                var filtered =
+                    allSurahs.filter(
+                        function(surah) {
+
+                            var name =
+                                String(
+                                    surah.name
+                                ).toLowerCase();
+
+
+                            return (
+                                name.indexOf(
+                                    text
+                                ) !== -1
+                                ||
+                                String(
+                                    surah.number
+                                ).indexOf(
+                                    text
+                                ) !== -1
+                            );
+
+                        }
+                    );
+
+
+                renderSurahs(
+                    filtered
+                );
+
+            }
+        );
+
+
+        /* ======================================
+           BUTTON EVENTS
+        ======================================= */
+
+        playButton.addEventListener(
+            "click",
+            toggleAudio
+        );
+
+
+        document.getElementById(
+            "nextButton"
+        ).addEventListener(
+            "click",
+            nextPage
+        );
+
+
+        document.getElementById(
+            "previousButton"
+        ).addEventListener(
+            "click",
+            previousPage
+        );
+
+
+        document.getElementById(
+            "nextBottomButton"
+        ).addEventListener(
+            "click",
+            nextPage
+        );
+
+
+        document.getElementById(
+            "previousBottomButton"
+        ).addEventListener(
+            "click",
+            previousPage
+        );
+
+
+        document.getElementById(
+            "openPageButton"
+        ).addEventListener(
+            "click",
+            openPage
+        );
+
+
+        document.getElementById(
+            "backButton"
+        ).addEventListener(
+            "click",
+            backToSurahs
+        );
+
+
+        document.getElementById(
+            "zoomIn"
+        ).addEventListener(
+            "click",
+            zoomIn
+        );
+
+
+        document.getElementById(
+            "zoomOut"
+        ).addEventListener(
+            "click",
+            zoomOut
+        );
+
+
+        document.getElementById(
+            "zoomReset"
+        ).addEventListener(
+            "click",
+            zoomReset
+        );
+
+
+        document.getElementById(
+            "fullscreenButton"
+        ).addEventListener(
+            "click",
+            toggleFullscreen
+        );
+
+
+        document.getElementById(
+            "bookmarkButton"
+        ).addEventListener(
+            "click",
+            saveBookmark
+        );
+
+
+        /* ======================================
+           ENTER IN PAGE INPUT
+        ======================================= */
+
+        document.getElementById(
+            "pageInput"
+        ).addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.keyCode === 13
+                ) {
+
+                    openPage();
+
+                }
+
+            }
+        );
+
+
+        /* ======================================
+           KEYBOARD PAGE CONTROL
+        ======================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                var mushaf =
+                    document.getElementById(
+                        "mushafView"
+                    );
+
+
+                if (
+                    mushaf.style.display !==
+                    "block"
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.target.tagName ===
+                    "INPUT"
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.keyCode === 37
+                ) {
+
+                    nextPage();
+
+                }
+
+
+                if (
+                    event.keyCode === 39
+                ) {
+
+                    previousPage();
+
+                }
+
+
+                if (
+                    event.keyCode === 187
+                ) {
+
+                    zoomIn();
+
+                }
+
+
+                if (
+                    event.keyCode === 189
+                ) {
+
+                    zoomOut();
+
+                }
+
+            }
+        );
+
+
+        /* ======================================
+           AUDIO SPEED
+        ======================================= */
+
+        speedSelect.addEventListener(
+            "change",
+            function() {
+
+                var speed =
+                    parseFloat(
+                        this.value
+                    );
+
+
+                if (
+                    !isNaN(speed)
+                ) {
+
+                    audio.playbackRate =
+                        speed;
+
+                }
+
+            }
+        );
+
+
+        /* ======================================
+           RECITER CHANGE
+        ======================================= */
+
+        reciterSelect.addEventListener(
+            "change",
+            function() {
+
+                stopAudio();
+
+            }
+        );
+
+
+        /* ======================================
+           AUDIO END
+        ======================================= */
+
+        audio.addEventListener(
+            "ended",
+            function() {
+
+                if (
+                    repeatAudio.checked
+                ) {
+
+                    audio.currentTime =
+                        0;
+
+
+                    audio.play()
+                        .catch(
+                            function() {
+                            }
+                        );
+
+                }
+
+                else {
+
+                    playButton.textContent =
+                        "▶";
+
+                }
+
+            }
+        );
+
+
+        /* ======================================
+           START
+        ======================================= */
+
+        updateZoom();
+
+        loadSurahs();
+
+        loadReciters();
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
